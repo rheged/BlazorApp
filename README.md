@@ -1,0 +1,2 @@
+# BlazorApp
+Playing with Blazor
