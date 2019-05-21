@@ -1,10 +1,15 @@
-@page "/counter"
+@using Hockey.Components
+
+@page "/players"
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
+
+<PlayerCard Id=1 >
+</PlayerCard>
 
 @functions {
     int currentCount = 0;

@@ -1,0 +1,25 @@
+@using Hockey.Service
+@using Hockey.Data
+@inject PlayerService PlayerService
+
+@page "/playerCard"
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@player.Name</h5>
+    <p class="card-text">@player.Projection</p>
+  </div>
+</div>
+
+@functions {
+    [Parameter]
+    private int Id { get; set; }
+
+    Player player;
+
+    protected override async Task OnInitAsync()
+    {
+        player = await PlayerService.GetPlayerAsync(Id);
+    }
+}
