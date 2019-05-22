@@ -1,0 +1,25 @@
+@using Hockey.Service
+@using Hockey.Data
+@inject PlayerService PlayerService
+
+<input  type="text" bind="@playerName" onkeypress="@(e => KeyPressed(e))" />
+
+ <p>Message: @pressedkeys</p>
+ <p>Name: @playerName</p>
+
+@functions {
+    string pressedkeys;
+    string playerName;
+
+    private void KeyPressed(UIKeyboardEventArgs args)
+    {
+        if (args.Key == "a")
+        {
+            pressedkeys="You pressed key A.";
+        }
+        else
+        {
+            pressedkeys="You pressed a key other than A.";
+        }
+    }
+}

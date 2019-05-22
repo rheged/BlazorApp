@@ -17,5 +17,10 @@ namespace Hockey.Service
         {
             return Task.FromResult(Teams);
         }
+
+        public Task<Team> GetTeamAsync(int teamId)
+        {
+            return Task.FromResult(Teams.First(x => x.Id == teamId));
+        }
     }
 }

@@ -17,5 +17,10 @@ namespace Hockey.Service
         {
             return Task.FromResult(Players.First(x => x.Id == playerId));
         }
+
+        public async Task<Player[]> GetPlayersByNameAsync(string playerName)
+        {
+            return await Task.FromResult(Players.Where(x => x.Name.ToLower().Contains(playerName.ToLower())).ToArray());
+        }
     }
 }
