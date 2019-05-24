@@ -1,25 +1,34 @@
-@using Hockey.Service
 @using Hockey.Data
+@using Hockey.Service
+
 @inject PlayerService PlayerService
 
-<input  type="text" bind="@playerName" onkeypress="@(e => KeyPressed(e))" />
+<input  type="text" bind-value-onkeydown="@playerName" onkeydown="@(() => AutoSearch())" />
 
- <p>Message: @pressedkeys</p>
  <p>Name: @playerName</p>
 
+@if (foundPlayers == null)
+{
+    <p><em>No Players Found</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var player in foundPlayers)
+        {
+            <li>@player.Name</li>
+        }
+    </ul>   
+}
+
 @functions {
-    string pressedkeys;
     string playerName;
 
-    private void KeyPressed(UIKeyboardEventArgs args)
+    Player[] foundPlayers;
+
+    protected async Task AutoSearch()
     {
-        if (args.Key == "a")
-        {
-            pressedkeys="You pressed key A.";
-        }
-        else
-        {
-            pressedkeys="You pressed a key other than A.";
-        }
+        foundPlayers = await PlayerService
+            .GetPlayersByNameAsync(playerName);
     }
 }

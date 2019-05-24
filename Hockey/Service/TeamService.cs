@@ -13,14 +13,14 @@ namespace Hockey.Service
             new Team { Id = 2, Name = "Fighting Mongooses", Rank = 2 }
         };
 
-        public Task<Team[]> GetTeamsAsync()
-        {
-            return Task.FromResult(Teams);
-        }
-
         public Task<Team> GetTeamAsync(int teamId)
         {
             return Task.FromResult(Teams.First(x => x.Id == teamId));
+        }
+
+        public Task<Team[]> GetTeamsAsync()
+        {
+            return Task.FromResult(Teams);
         }
     }
 }
