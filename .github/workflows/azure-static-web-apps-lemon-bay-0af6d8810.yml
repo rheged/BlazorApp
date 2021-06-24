@@ -16,10 +16,10 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true
+         with:
+           submodules: true
 
-       name: Build Blazor App
+      - name: Build Blazor App
         run: dotnet publish -c Release -o ../published
 
       - name: Build And Deploy
