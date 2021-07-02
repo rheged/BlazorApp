@@ -15,6 +15,6 @@
             await JS.InvokeVoidAsync("showRink");
         }
 
-        message = await Http.GetStringAsync("HttpTriggerSchedule");
+        message = await Http.GetStringAsync("api/HttpTriggerSchedule");
     }  
 }
