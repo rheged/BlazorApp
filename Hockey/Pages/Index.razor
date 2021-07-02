@@ -6,8 +6,15 @@
 
 <p>@message</p>
 
+<p>Hello</p>
+
 @code {
     string message;
+
+    protected override async Task OnInitializedAsync()
+    {       
+        message = await Http.GetStringAsync("api/HttpTriggerSchedule");
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -15,6 +22,5 @@
             await JS.InvokeVoidAsync("showRink");
         }
 
-        message = await Http.GetStringAsync("api/HttpTriggerSchedule");
     }  
 }
